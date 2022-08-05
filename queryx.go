@@ -84,7 +84,7 @@ func (q *Queryx) BindMap(arg map[string]interface{}) IQueryx {
 }
 
 func (q *Queryx) Bind(v ...interface{}) IQueryx {
-	queryx := q.Q.Bind(v)
+	queryx := q.Q.Bind(v...)
 
 	q.Q = queryx
 
