@@ -13,6 +13,7 @@ type ISessionx interface {
 	ExecStmt(stmt string) error
 	AwaitSchemaAgreement(ctx context.Context) error
 	Close()
+	Session() *Session
 }
 
 type Session struct {
@@ -45,6 +46,10 @@ func (s *Session) AwaitSchemaAgreement(ctx context.Context) error {
 
 func (s *Session) Close() {
 	s.S.Close()
+}
+
+func (s *Session) Session() *Session {
+	return s
 }
 
 func NewSession(session *gocql.Session) ISessionx {
