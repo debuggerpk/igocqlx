@@ -432,24 +432,3 @@ func makeGocqlxQueryxSut() queryxGocqlxSut {
 		Sut: sut,
 	}
 }
-
-type metadataGocqlxSut struct {
-	Name    string
-	Columns []string
-	PartKey []string
-	SortKey []string
-}
-
-func makeGocqlxMetadataSut() metadataGocqlxSut {
-	name := "tracking_data"
-	columns := []string{"first_name", "last_name", "location"}
-	partKey := []string{"first_name", "last_name"}
-	sortKey := []string{"location"}
-
-	return metadataGocqlxSut{
-		Name:    name,
-		Columns: columns,
-		PartKey: partKey,
-		SortKey: sortKey,
-	}
-}

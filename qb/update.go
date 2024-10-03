@@ -1,19 +1,12 @@
 package igocqlxqb
 
 import (
-	"bytes"
 	"context"
 	"time"
 
 	"github.com/Guilospanck/igocqlx"
 	"github.com/scylladb/gocqlx/v2/qb"
 )
-
-type value interface {
-	// writeCql writes the bytes for this value to the buffer and returns the
-	// list of names of parameters which need substitution.
-	writeCql(cql *bytes.Buffer) (names []string)
-}
 
 type IUpdateBuilder interface {
 	ToCql() (stmt string, names []string)
