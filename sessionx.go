@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/gocql/gocql"
+	"github.com/scylladb/go-reflectx"
 	"github.com/scylladb/gocqlx/v2"
 )
 
@@ -14,6 +15,7 @@ type ISessionx interface {
 	AwaitSchemaAgreement(ctx context.Context) error
 	Close()
 	Session() *Session
+	SetMapper(mapper *reflectx.Mapper)
 }
 
 type Session struct {
@@ -46,6 +48,10 @@ func (s *Session) AwaitSchemaAgreement(ctx context.Context) error {
 
 func (s *Session) Close() {
 	s.S.Close()
+}
+
+func (s *Session) SetMapper(mapper *reflectx.Mapper) {
+	s.S.Mapper = mapper
 }
 
 func (s *Session) Session() *Session {
